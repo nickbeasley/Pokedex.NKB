@@ -26,7 +26,7 @@ let pokemonList = [
     {
         name: 'Gangar',
         height: 2,
-        weight, 2,
+        weight: 2,
         type: ['ghost' , 'psycic'],
             },
     {

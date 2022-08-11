@@ -1,3 +1,4 @@
+// List of pokemon
 let pokemonList = [
   {
     name: "Venosaur",
@@ -36,3 +37,24 @@ let pokemonList = [
     type: ["poison"],
   },
 ];
+//Full pokemon list - working
+document.write('<div class="pokemon-list">');
+for (let b = 0; b < pokemonList.length; b++) {
+  if (pokemonList[b]) {
+    document.write(pokemonList[b].name + " ");
+  }
+}
+document.write("</div>");
+
+//Pokemon size loop - working
+document.write('<div class="pokemone-list2">');
+for (let a = 0; a < pokemonList.length; a++) {
+  if (pokemonList[a].weight > 100 && pokemonList[a].weight < 300) {
+    document.write(pokemonList[a].name + " is a medium sized pokemon. ");
+  } else if (pokemonList[a].weight < 100) {
+    document.write(pokemonList[a].name + " is a just little guy. <br>");
+  } else {
+    document.write(pokemonList[a].name + " is a big boy! <br>");
+  }
+}
+document.write("</div>");

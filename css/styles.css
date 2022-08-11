@@ -5,4 +5,16 @@ html {
 body {
   height: 100;
   width: 100%;
+  background-color: lightblue;
+}
+div {
+  background-color: lightgray;
+  border: 1px solid red;
+  border-radius: 5px;
+  color: black;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px;
+  margin-top: 10px;
 }

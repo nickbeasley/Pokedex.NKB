@@ -7,20 +7,9 @@ body {
   width: 100%;
   background-color: lightblue;
 }
-div {
-  background-color: lightgray;
-  border: 1px solid red;
-  border-radius: 5px;
-  color: black;
-  width: 50%;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 10px;
-  margin-top: 10px;
-}
 h1 {
   text-align: center;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .button-class {
   background-color: #065d93;
@@ -29,11 +18,15 @@ h1 {
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 16px;
   margin: 4px 2px;
+  margin-left: auto;
+  margin-right: auto;
   cursor: pointer;
-  width: 200px;
+  width: 50%;
   border-radius: 5px;
 }
 .button-class:active {

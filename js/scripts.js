@@ -1,5 +1,5 @@
-let pokemonRepostitory = (function () {
-  let pokemonList = [
+let pokemonRepository = (function () {
+  let repository = [
     {
       name: "Venosaur",
       height: 2,
@@ -37,92 +37,49 @@ let pokemonRepostitory = (function () {
       type: ["poison"],
     },
   ];
-  //getAll fuction here
-  function getAll(pokemon) {
-    return pokemonList;
-  }
+
   //add function here, can only add if pokemon is an "object"
   //the object has to have a name, weight, height, and type
   function add(pokemon) {
-    if (typeof pokemon == "object") {
-      if (
-        "name" in pokemon &&
-        "height" in pokemon &&
-        "weight" in pokemon &&
-        "type" in pokemon
-      ) {
-        pokemonList.push(pokemon);
-      }
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon &&
+      "height" in pokemon &&
+      "types" in pokemon
+    ) {
+      repository.push(pokemon);
     }
   }
 
+  //getAll fuction here
+  function getAll() {
+    return repository;
+  }
+  //Creating the list
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listpokemon = document.createElement("li");
+    //Button created and added with a class
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+    // button fuction added
+    button.addEventListener("click", function () {
+      showDetails(pokemon);
+    }); //1.6
+  }
+  //Shows pokemon details in console when clicked
+  function showDetails(pokemon) {
+    console.log(pokemon); //1.6
+  }
   return {
-    getAll: getAll,
-    add: add,
+    add,
+    getAll,
+    addListItem,
   };
 })();
-//adding a pokemon to the list
-pokemonRepostitory.add({
-  name: "Meowth",
-  height: 1.6,
-  weight: 50,
-  type: ["noraml"],
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
 });
-
-let pokemonList = pokemonRepostitory.getAll();
-
-document.write('<div class="pokemon-list">');
-
-//listing pokemon with weight comments
-pokemonList.forEach(function (pokemon) {
-  if (pokemon.weight > 100 && pokemon.weight < 300) {
-    document.write("<p>" + pokemon.name + " is a medium sized pokemon. </p>");
-  } else if (pokemon.weight < 100) {
-    document.write("<p>" + pokemon.name + " is a little guy </p>");
-  } else {
-    document.write("<p>" + pokemon.name + " is a big boy </p>");
-  }
-});
-
-document.write("</div>");
-
-document.write('<div class="pokemone-list2">');
-
-//listing all pokemon
-pokemonList.forEach(function (pokemon) {
-  if (pokemon) {
-    document.write("<p>" + pokemon.name + "</p>");
-  }
-});
-
-document.write("</div>");
-
-/*
-//Full pokemon list 
-document.write('<div class="pokemon-list">');
-//this line is looping through the lists array items
-for (let b = 0; b < pokemonList.length; b++) {
-  //if there is a pokemonlist array item in slot b, which changes, then it writes the pokemon's name with a space
-  if (pokemonList[b]) {
-    document.write(pokemonList[b].name + " ");
-  }
-}
-document.write("</div>");
-
-//Pokemon size loop 
-document.write('<div class="pokemone-list2">');
-//this line is looping through the lists array items
-for (let a = 0; a < pokemonList.length; a++) {
-  //if a pokemon is between 100 and 300 then its a medium pokemen
-  if (pokemonList[a].weight > 100 && pokemonList[a].weight < 300) {
-    document.write(pokemonList[a].name + " is a medium sized pokemon. ");
-    //if a pokemon is under 100 then its a little guy
-  } else if (pokemonList[a].weight < 100) {
-    document.write(pokemonList[a].name + " is a just little guy. <br>");
-    //anything else, which is just bigger than 300, makes the pokemon a big boy
-  } else {
-    document.write(pokemonList[a].name + " is a big boy! <br>");
-  }
-}
-document.write("</div>");
-*/

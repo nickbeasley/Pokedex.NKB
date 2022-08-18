@@ -35,3 +35,7 @@ h1 {
 ul {
   list-style: none;
 }
+#loading-message {
+  text-align: center;
+  font-style: italic;
+}

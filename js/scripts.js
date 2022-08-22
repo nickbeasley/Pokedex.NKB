@@ -2,7 +2,7 @@ let pokemonRepository = (function () {
   let pokemonList = [];
 
   // linking api - 1.7
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=250";
 
   //loading message
   let loadingMessage = document.getElementById("loading-message");
@@ -73,6 +73,7 @@ let pokemonRepository = (function () {
       })
       .then(function (details) {
         item.imageUrl = details.sprites.front_default;
+        item.id = details.id;
         item.weight = details.weight;
         item.height = details.height;
         item.types = details.types.map(function (pokemon) {
@@ -131,6 +132,9 @@ let pokemonRepository = (function () {
       let pictureElement = document.createElement("img");
       pictureElement.src = pokemon.imageUrl;
 
+      let idElement = document.createElement("p");
+      idElement.innerText = "#" + pokemon.id;
+
       let heightElement = document.createElement("p");
       heightElement.innerText = "Height: " + pokemon.height + "ft";
 
@@ -142,7 +146,7 @@ let pokemonRepository = (function () {
 
       let navigateRightElement = document.createElement("div");
       navigateRightElement.classList.add("pokemon-nav2");
-      if (getPokemonIndex(pokemon) === 149) {
+      if (getPokemonIndex(pokemon) === 249) {
         navigateRightElement.classList.add("pokemon-nav2--disabled");
       }
       navigateRightElement.innerText = "Next";
@@ -153,6 +157,7 @@ let pokemonRepository = (function () {
       modal.appendChild(closeButtonElement);
       pokemonInfoElement.appendChild(titleElement);
       pokemonInfoElement.appendChild(pictureElement);
+      pokemonInfoElement.appendChild(idElement);
       pokemonInfoElement.appendChild(heightElement);
       pokemonInfoElement.appendChild(weightElement);
       pokemonInfoElement.appendChild(typesElement);

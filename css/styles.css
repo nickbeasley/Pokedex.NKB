@@ -31,7 +31,7 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
-  width: 70%;
+  width: 80%;
   border-radius: 5px;
 }
 .button-class:active {
@@ -42,7 +42,7 @@ h1 {
 }
 ul {
   list-style: none;
-  column-count: 3;
+  column-count: 5;
 }
 #loading-message {
   text-align: center;

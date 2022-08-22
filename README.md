@@ -9,3 +9,5 @@ To build a small web application with HTML, CSS, and JavaScript that loads data 
 ## Project Dependencies:
 
 ## API's used:
+
+https://pokeapi.co/api/v2/pokemon/?limit=150

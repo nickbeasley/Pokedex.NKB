@@ -152,7 +152,7 @@ ul {
 .pokemon-nav2--disabled {
   visibility: hidden;
 }
-#myInput {
+#pokemon-search {
   float: right;
   margin: 20px;
   padding: 10px;
@@ -165,4 +165,7 @@ ul {
 .pokemon-img {
   width: 200px;
   height: 200px;
+}
+.is-hidden {
+  display: none;
 }

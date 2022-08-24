@@ -220,7 +220,28 @@ pokemonRepository.loadList().then(function () {
   });
 }); //1.7
 
-// Search Bar - not working
-let searchFunction = function () {
-  let input = document.getElementById("myInput");
+/* Search Bar - not working 
+function searchFunction() {
+  document.getElementById("pokemon-search").addEventListener("keyup", (e) => {
+    let value = value.toLowerCase();
+    document.getElementByClassName(".button-class").filter(function () {
+      this.toggle(this.innerText.toLowerCase().indexOf(value) > -1);
+    });
+  });
+}
+
+
+let box = document.querySelectorAll("button-class");
+
+function searchFunction() {
+  let search_query = document.getElementById("pokemon-search").value;
+
+  for (var i = 0; i < box.length; i++) {
+    if (box[i].toLowerCase().includes(search_query.toLowerCase())) {
+      box[i].classList.remove("is-hidden");
+    } else {
+      box[i].classList.add("is-hidden");
+    }
+  }
 };
+*/

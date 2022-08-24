@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pokedex</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
   </head>
   <body>
@@ -15,9 +16,23 @@
         width="70"
         alt="page logo"
       />
+      <img class="header-img" src="img/eevee.png" alt="Pokemon icon" />
+      <img class="header-img" src="img/pikachu.png" alt="Pokemon icon" />
+      <img class="header-img" src="img/charmander.png" alt="Pokemon icon" />
+      <img class="header-img" src="img/bullbasaur.png" alt="Pokemon icon" />
+      <img class="header-img" src="img/squirtle.png" alt="Pokemon icon" />
+      <img class="header-img" src="img/snorlax.png" alt="Pokemon icon" />
+
+      <input
+        type="text"
+        id="myInput"
+        onkeyup="searchFunction()"
+        placeholder="Search for Pokemon.."
+        title="Type in a name"
+      />
     </header>
     <div class="container">
-      <h1>Pokedex</h1>
+      <h1 class="page-title">Pokedex</h1>
       <p id="loading-message"></p>
       <ul class="pokemon-list"></ul>
     </div>

@@ -54,7 +54,6 @@ let pokemonRepository = (function () {
             detailsUrl: item.url,
           };
           add(pokemon);
-          console.log(pokemon);
         });
         hideLoadingMessage();
       })
@@ -130,6 +129,7 @@ let pokemonRepository = (function () {
         pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
 
       let pictureElement = document.createElement("img");
+      pictureElement.classList.add("pokemon-img");
       pictureElement.src = pokemon.imageUrl;
 
       let idElement = document.createElement("p");
@@ -219,3 +219,8 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.addListItem(pokemon);
   });
 }); //1.7
+
+// Search Bar - not working
+let searchFunction = function () {
+  let input = document.getElementById("myInput");
+};

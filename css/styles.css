@@ -14,6 +14,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 header {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -46,6 +47,7 @@ h1.page-title {
   cursor: pointer;
   width: 80%;
   border-radius: 5px;
+  flex: auto;
 }
 .button-class:active {
   opacity: 80%;

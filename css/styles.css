@@ -10,15 +10,28 @@ html {
 body {
   height: 100;
   width: 100%;
+  background-color: lightcyan;
+  font-family: Arial, Helvetica, sans-serif;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: lightblue;
+  padding: 20px;
 }
 h1 {
   text-align: center;
   text-decoration: none;
+  font-weight: bold;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+h1.page-title {
+  font-size: 60px;
 }
 .button-class {
   background-color: var(--button-bacground);
-  border: none;
+  border: 3px outset black;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -83,7 +96,7 @@ ul {
   width: 100%;
   max-width: 700px;
   text-align: left;
-  border: 1px solid black;
+  border: 5px outset black;
 }
 
 .modal-close {
@@ -124,6 +137,10 @@ ul {
   user-select: none;
   color: blue;
 }
+.pokemon-nav1:hover,
+.pokemon-nav2:hover {
+  text-decoration: underline;
+}
 .pokemon-nav2 {
   cursor: pointer;
   user-select: none;
@@ -134,4 +151,18 @@ ul {
 }
 .pokemon-nav2--disabled {
   visibility: hidden;
+}
+#myInput {
+  float: right;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid blue;
+}
+.header-img {
+  width: 80px;
+  height: 80px;
+}
+.pokemon-img {
+  width: 200px;
+  height: 200px;
 }

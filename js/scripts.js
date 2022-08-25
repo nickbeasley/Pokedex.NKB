@@ -204,6 +204,7 @@ let pokemonRepository = (function () {
   function loadNextPokemon(pokemon) {
     showDetails(pokemonList[getPokemonIndex(pokemon) + 1]);
   }
+
   return {
     add: add,
     getAll: getAll,
@@ -219,8 +220,3 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.addListItem(pokemon);
   });
 }); //1.7
-
-// Search Bar - not working
-let searchFunction = function () {
-  let input = document.getElementById("myInput");
-};

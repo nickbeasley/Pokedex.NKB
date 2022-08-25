@@ -85,9 +85,21 @@ ul {
 #modal-container.show-modal {
   display: block;
 }
+p.modal-item {
+  text-align: center;
+}
+.modal-content {
+  background-color: lightgray;
+  border: black 3px outset;
+}
+.modal-header {
+  background-color: #065d93;
+  color: white;
+}
 .modal-footer {
   display: flex;
   justify-content: space-between;
+  border-top: 1px dashed black;
 }
 .pokemon-nav1 {
   cursor: pointer;
@@ -120,11 +132,4 @@ ul {
 .pokemon-img2 {
   width: 150px;
   height: 150px;
-}
-p.modal-item {
-  text-align: center;
-}
-.modal-content {
-  background-color: lightgray;
-  border: black 3px outset;
 }

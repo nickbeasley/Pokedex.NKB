@@ -88,6 +88,9 @@ let pokemonRepository = (function () {
         item.types = details.types.map(function (pokemon) {
           return " " + pokemon.type.name;
         });
+        item.abilities = details.abilities.map(function (pokemon) {
+          return " " + pokemon.ability.name;
+        });
         hideLoadingMessage();
       })
       .catch(function (e) {
@@ -130,6 +133,9 @@ let pokemonRepository = (function () {
     let typeElement = $(
       '<p class = "modal-item">' + "Types: " + pokemon.types + "</p>"
     );
+    let abilityElement = $(
+      '<p class = "modal-item">' + "Abilities: " + pokemon.abilities + "</p>"
+    );
     let navigateLeftElement = document.createElement("div");
     navigateLeftElement.classList.add("pokemon-nav1");
     if (getPokemonIndex(pokemon) === 0) {
@@ -156,6 +162,7 @@ let pokemonRepository = (function () {
     modalBody.append(heightElement);
     modalBody.append(weightElement);
     modalBody.append(typeElement);
+    modalBody.append(abilityElement);
     modalFooter.append(navigateLeftElement);
     modalFooter.append(navigateRightElement);
   }

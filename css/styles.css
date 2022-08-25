@@ -1,5 +1,5 @@
 :root {
-  --button-bacground: #065d93;
+  --button-background: #065d93;
   --modal-background: lightgray;
   --modal-container: ;
 }
@@ -10,16 +10,16 @@ html {
 body {
   height: 100;
   width: 100%;
-  background-color: lightcyan;
+  background-color: #59b7d6;
   font-family: Arial, Helvetica, sans-serif;
 }
 header {
-  min-width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: lightblue;
+  background-color: lightslategray;
   padding: 20px;
+  border-radius: 10px;
 }
 h1 {
   text-align: center;
@@ -31,7 +31,7 @@ h1.page-title {
   font-size: 60px;
 }
 .button-class {
-  background-color: var(--button-bacground);
+  background-color: var(--button-background);
   border: 3px outset black;
   color: white;
   padding: 15px 32px;
@@ -154,12 +154,6 @@ ul {
 }
 .pokemon-nav2--disabled {
   visibility: hidden;
-}
-#myInput {
-  float: right;
-  margin: 20px;
-  padding: 10px;
-  border: 1px solid blue;
 }
 .header-img {
   width: 50px;

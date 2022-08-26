@@ -171,11 +171,6 @@ let pokemonRepository = (function () {
     modalContainer.classList.remove("show-modal");
   }
 
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modalContainer.classList.contains("show-modal")) {
-      hideModal();
-    }
-  });
   function getPokemonIndex(pokemon) {
     return pokemonList.findIndex((p) => p.name === pokemon.name);
   } //1.8

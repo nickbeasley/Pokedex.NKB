@@ -29,7 +29,8 @@ h1 {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 h1.page-title {
-  margin-top: 150px;
+  margin-top: 100px;
+  font-size: 60px;
 }
 .button-class {
   background-color: var(--button-background);
@@ -57,7 +58,7 @@ h1.page-title {
 .button-class:hover {
   opacity: 80%;
 }
-ul {
+ul.list-group-horizontal {
   list-style: none;
   column-count: 5;
 }
@@ -122,8 +123,8 @@ p.modal-item {
   visibility: hidden;
 }
 .header-img {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 }
 .pokemon-img {
   width: 250px;

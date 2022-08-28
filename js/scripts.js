@@ -9,6 +9,8 @@ let pokemonRepository = (function () {
 
   let modalContainer = document.querySelector("#modal-container");
 
+  let searchField = document.querySelector("#pokedex-search");
+
   //add function here, can only add if pokemon is an "object"
   //the object has to have a name, weight, height, and type
   function add(pokemon) {
@@ -182,6 +184,19 @@ let pokemonRepository = (function () {
   function loadNextPokemon(pokemon) {
     showDetails(pokemonList[getPokemonIndex(pokemon) + 1]);
   }
+
+  searchField.addEventListener("input", function () {
+    let pokeList = document.querySelectorAll(".pokemonButton");
+    let filterValue = searchField.value.toUpperCase();
+
+    pokeList.forEach(function (pokemon) {
+      if (pokemon.innerText.toUpperCase().indexOf(filterValue) > -1) {
+        pokemon.style.display = "";
+      } else {
+        pokemon.style.display = "none";
+      }
+    });
+  });
 
   return {
     add: add,

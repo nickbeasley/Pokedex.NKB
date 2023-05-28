@@ -1,18 +1,11 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
-
-  // linking api - 1.7
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=250";
-
-  //loading message
   let loadingMessage = document.getElementById("loading-message");
-
   let modalContainer = document.querySelector("#modal-container");
-
   let searchField = document.querySelector("#pokedex-search");
+  let pokemonListContainer = document.querySelector(".list-group-horizontal");
 
-  //add function here, can only add if pokemon is an "object"
-  //the object has to have a name, weight, height, and type
   function add(pokemon) {
     if (typeof pokemon === "object" && "name" in pokemon) {
       pokemonList.push(pokemon);
@@ -21,13 +14,11 @@ let pokemonRepository = (function () {
     }
   }
 
-  //getAll fuction here
   function getAll() {
     return pokemonList;
   }
 
   function addListItem(pokemon) {
-    let pokemonList = document.querySelector(".list-group-horizontal");
     let listItem = document.createElement("li");
     listItem.classList.add("group-list-item");
     let buttonItem = document.createElement("button");
@@ -36,10 +27,9 @@ let pokemonRepository = (function () {
       pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
     buttonItem.setAttribute("data-toggle", "modal");
     buttonItem.setAttribute("data-target", "#pokemon-modal");
-    $(buttonItem).addClass("button-class btn-block btn m1");
     buttonItem.classList.add("button-class");
     listItem.appendChild(buttonItem);
-    pokemonList.appendChild(listItem);
+    pokemonListContainer.appendChild(listItem);
     buttonItem.addEventListener("click", function () {
       showDetails(pokemon);
     });
@@ -52,19 +42,22 @@ let pokemonRepository = (function () {
     });
   }
 
-  function loadList() {
+  function loadList(filterQuery = "") {
     showLoadingMessage();
     return fetch(apiUrl)
       .then(function (response) {
         return response.json();
       })
       .then(function (json) {
+        pokemonList = []; // Clear the previous list
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
             detailsUrl: item.url,
           };
-          add(pokemon);
+          if (matchesFilter(pokemon, filterQuery)) {
+            add(pokemon);
+          }
         });
         hideLoadingMessage();
       })
@@ -72,7 +65,7 @@ let pokemonRepository = (function () {
         console.error(e);
         hideLoadingMessage();
       });
-  } //1.7
+  }
 
   function loadDetails(item) {
     showLoadingMessage();
@@ -99,16 +92,16 @@ let pokemonRepository = (function () {
         console.error(e);
         hideLoadingMessage();
       });
-  } //1.7
+  }
 
   function showLoadingMessage() {
     loadingMessage.innerText = "Loading...";
-  } //1.7
+  }
+
   function hideLoadingMessage() {
     loadingMessage.innerText = "";
-  } //1.7
+  }
 
-  //Shows pokemon details when clicked
   function showModal(pokemon) {
     let modalBody = $(".modal-body");
     let modalTitle = $(".modal-title");
@@ -125,18 +118,18 @@ let pokemonRepository = (function () {
     imageElement.attr("src", pokemon.imageUrl);
     let backImageElement = $('<img class="pokemon-img2">');
     backImageElement.attr("src", pokemon.backImageUrl);
-    let idElement = $('<p class = "modal-item">' + "#" + pokemon.id + "</p>");
+    let idElement = $('<p class="modal-item">' + "#" + pokemon.id + "</p>");
     let heightElement = $(
-      '<p class = "modal-item">' + "Height: " + pokemon.height + "ft" + "</p>"
+      '<p class="modal-item">' + "Height: " + pokemon.height + "ft" + "</p>"
     );
     let weightElement = $(
-      '<p class = "modal-item">' + "Weight: " + pokemon.weight + "lbs" + "</p>"
+      '<p class="modal-item">' + "Weight: " + pokemon.weight + "lbs" + "</p>"
     );
     let typeElement = $(
-      '<p class = "modal-item">' + "Types: " + pokemon.types + "</p>"
+      '<p class="modal-item">' + "Types: " + pokemon.types + "</p>"
     );
     let abilityElement = $(
-      '<p class = "modal-item">' + "Abilities: " + pokemon.abilities + "</p>"
+      '<p class="modal-item">' + "Abilities: " + pokemon.abilities + "</p>"
     );
     let navigateLeftElement = document.createElement("div");
     navigateLeftElement.classList.add("pokemon-nav1");
@@ -149,7 +142,7 @@ let pokemonRepository = (function () {
     );
     let navigateRightElement = document.createElement("div");
     navigateRightElement.classList.add("pokemon-nav2");
-    if (getPokemonIndex(pokemon) === 249) {
+    if (getPokemonIndex(pokemon) === pokemonList.length - 1) {
       navigateRightElement.classList.add("pokemon-nav2--disabled");
     }
     navigateRightElement.innerText = "Next";
@@ -175,7 +168,7 @@ let pokemonRepository = (function () {
 
   function getPokemonIndex(pokemon) {
     return pokemonList.findIndex((p) => p.name === pokemon.name);
-  } //1.8
+  }
 
   function loadPreviousPokemon(pokemon) {
     showDetails(pokemonList[getPokemonIndex(pokemon) - 1]);
@@ -185,16 +178,17 @@ let pokemonRepository = (function () {
     showDetails(pokemonList[getPokemonIndex(pokemon) + 1]);
   }
 
-  searchField.addEventListener("input", function () {
-    let pokeList = document.querySelectorAll(".pokemonButton");
-    let filterValue = searchField.value.toUpperCase();
+  function matchesFilter(pokemon, filterQuery) {
+    return pokemon.name.toUpperCase().includes(filterQuery.toUpperCase());
+  }
 
-    pokeList.forEach(function (pokemon) {
-      if (pokemon.innerText.toUpperCase().indexOf(filterValue) > -1) {
-        pokemon.style.display = "";
-      } else {
-        pokemon.style.display = "none";
-      }
+  searchField.addEventListener("input", function () {
+    let filterValue = searchField.value.trim();
+    pokemonListContainer.innerHTML = ""; // Clear the previous list
+    loadList(filterValue).then(function () {
+      getAll().forEach(function (pokemon) {
+        addListItem(pokemon);
+      });
     });
   });
 
@@ -212,4 +206,4 @@ pokemonRepository.loadList().then(function () {
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
-}); //1.7
+});
